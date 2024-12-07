@@ -6,6 +6,7 @@ import { Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import GlobalApi from "../_utils/GlobalApi";
 import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function CategorySearch() {
   const [categoryList, setCategoryList] = useState([]);
@@ -44,21 +45,31 @@ function CategorySearch() {
       </div>
       {/* display list of category  */}
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-10">
-        {categoryList.map((item, index) => (
-          // index < 6 &&
-          <div
-            key={index}
-            className="flex flex-col text-center gap-2 items-center p-5 bg-blue-50 font-semibold text-primary rounded-lg hover:bg-blue-100 hover:hover:scale-105 transition-all ease-in-out cursor-pointer"
-          >
-            <Image
-              src={item?.Icon?.url}
-              alt="category-icon"
-              width={40}
-              height={40}
-            />
-            <label>{item?.Name}</label>
-          </div>
-        ))}
+        {categoryList.length > 0 ? (
+          categoryList.map((item, index) => (
+            // index < 6 &&
+            <div
+              key={index}
+              className="flex flex-col text-center gap-2 items-center p-5 bg-blue-50 font-semibold text-primary rounded-lg hover:bg-blue-100 hover:hover:scale-105 transition-all ease-in-out cursor-pointer"
+            >
+              <Image
+                src={item?.Icon?.url}
+                alt="category-icon"
+                width={40}
+                height={40}
+              />
+              <label>{item?.Name}</label>
+            </div>
+          ))
+        ) : (
+          <>
+            {" "}
+            <Skeleton className="w-[120px] h-[100px] bg-slate-200 rounded-lg animate-pulse" />
+            <Skeleton className="w-[120px] h-[100px] bg-slate-200 rounded-lg animate-pulse" />
+            <Skeleton className="w-[120px] h-[100px] bg-slate-200 rounded-lg animate-pulse" />
+            <Skeleton className="w-[120px] h-[100px] bg-slate-200 rounded-lg animate-pulse" />
+          </>
+        )}
       </div>
     </section>
   );
