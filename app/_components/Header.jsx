@@ -27,8 +27,8 @@ function Header() {
         <Image src="/logo.png" alt="logo" width={180} height={80} />
         <ul className="md:flex gap-8 hidden">
           {Menu.map((item, index) => (
-            <Link href={item?.path}>
-              <li className="hover:text-primary cursor-pointer hover:scale-105 transition-all ease-in-out">
+            <Link key={index} href={item?.path}>
+              <li className="hover:text-primary cursor-pointer hover:scale-105 transition-all ease-in-out text-primary">
                 {item?.name}
               </li>
             </Link>
