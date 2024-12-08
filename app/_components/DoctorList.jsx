@@ -12,7 +12,7 @@ function DoctorList({ doctorList }) {
           doctorList.map((item, index) => (
             <div
               key={index}
-              className="border-[1px] rounded-lg p-3 mt-10 cursor-pointer hover:border-primary transition-all ease-in-out hover:shadow-md"
+              className="border-[1px] rounded-lg p-3 mt-10 cursor-pointer hover:border-secondary transition-all ease-in-out hover:shadow-md"
             >
               <Image
                 src={item?.image?.url}
@@ -30,7 +30,7 @@ function DoctorList({ doctorList }) {
                   {item?.Year_of_Experience}
                 </span>
                 <span className="text-gray-500 text-sm">{item?.Address}</span>
-                <button className="p-2 px-3 border-[1px] border-primary text-primary rounded-full w-full text-center text-xs mt-2 cursor-pointer hover:bg-primary hover:text-white">
+                <button className="p-2 px-3 border-[1px] font-semibold rounded-full w-full text-center text-xs mt-2 cursor-pointer hover:bg-secondary hover:text-white">
                   Book Now
                 </button>
               </div>

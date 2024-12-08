@@ -3,7 +3,9 @@
 import React, { useEffect } from "react";
 
 function Search({ params }) {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(params);
+  }, []);
   return <div>Search</div>;
 }
 

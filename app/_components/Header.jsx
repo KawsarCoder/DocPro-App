@@ -28,14 +28,16 @@ function Header() {
         <ul className="md:flex gap-8 hidden">
           {Menu.map((item, index) => (
             <Link key={index} href={item?.path}>
-              <li className="hover:text-primary cursor-pointer hover:scale-105 transition-all ease-in-out text-primary">
+              <li className="hover:text-secondary cursor-pointer hover:scale-105 transition-all ease-in-out ">
                 {item?.name}
               </li>
             </Link>
           ))}
         </ul>
       </div>
-      <Button>Get Started</Button>
+      <Button className="bg-white text-secondary font-semibold border border-secondary hover:bg-secondary hover:text-white">
+        Get Started
+      </Button>
     </section>
   );
 }
