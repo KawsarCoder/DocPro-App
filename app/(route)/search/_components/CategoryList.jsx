@@ -48,7 +48,8 @@ function CategoryList() {
                 <Link
                   href={"/search/" + item?.Name}
                   className={` p-2 flex gap-2 border font-semibold hover:border-secondary items-center rounded-md cursor-pointer w-full hover:text-secondary ${
-                    category == item?.Name && "border-secondary text-secondary"
+                    category == item?.Name &&
+                    "border-secondary text-secondary bg-orange-100"
                   }`}
                 >
                   <Image
