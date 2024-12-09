@@ -1,12 +1,26 @@
 "use client";
 
-import React, { useEffect } from "react";
+import DoctorList from "@/app/_components/DoctorList";
+import GlobalApi from "@/app/_utils/GlobalApi";
+import React, { useEffect, useState } from "react";
 
 function Search({ params }) {
+  const [doctorList, setDoctorlist] = useState([]);
   useEffect(() => {
-    console.log(params);
+    getDoctors();
   }, []);
-  return <div>Search</div>;
+
+  const getDoctors = () => {
+    GlobalApi.getDoctorCategory(params.cname).then((res) => {
+      setDoctorlist(res.data.data);
+    });
+  };
+
+  return (
+    <section className="mt-5">
+      <DoctorList heading={params.cname} doctorList={doctorList} />
+    </section>
+  );
 }
 
 export default Search;
