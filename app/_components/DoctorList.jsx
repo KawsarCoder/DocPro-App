@@ -1,5 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function DoctorList({ doctorList, heading = "Popular Doctors" }) {
@@ -29,9 +30,12 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }) {
                   {item?.Year_of_Experience}
                 </span>
                 <span className="text-gray-500 text-sm">{item?.Address}</span>
-                <button className="p-2 px-3 border-[1px] font-semibold rounded-full w-full text-center text-xs mt-2 cursor-pointer hover:bg-secondary hover:text-white">
+                <Link
+                  className="p-2 px-3 border font-semibold rounded-full w-full text-center mt-2 cursor-pointer hover:bg-secondary hover:text-white"
+                  href={"/details/" + item?.id}
+                >
                   Book Now
-                </button>
+                </Link>
               </div>
             </div>
           ))
