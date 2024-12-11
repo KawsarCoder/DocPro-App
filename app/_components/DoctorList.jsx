@@ -4,6 +4,8 @@ import Link from "next/link";
 import React from "react";
 
 function DoctorList({ doctorList, heading = "Popular Doctors" }) {
+  console.log(doctorList);
+
   return (
     <div className="mb-10 px-8">
       <h2 className="font-bold text-xl">{heading}</h2>
@@ -15,7 +17,7 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }) {
               className="border-[1px] rounded-lg p-3 mt-10 cursor-pointer hover:border-secondary transition-all ease-in-out hover:shadow-md"
             >
               <Image
-                src={item?.image?.url}
+                src={item?.Photo[0]?.url}
                 alt="doctor-image"
                 width={500}
                 height={200}
@@ -25,14 +27,16 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }) {
                 <h2 className="text-xs bg-orange-100 text-secondary font-semibold p-1 rounded-full px-2 ">
                   {item?.categories[0]?.Name}
                 </h2>
-                <h2 className="font-bold text-[16px]">{item?.Name}</h2>
+                <h2 className="font-bold text-[16px]">{item?.DoctorName}</h2>
                 <span className="text-primary font-semibold">
                   {item?.Year_of_Experience}
                 </span>
-                <span className="text-gray-500 text-sm">{item?.Address}</span>
+                <span className="text-gray-500 text-sm">
+                  {item?.DoctorAddress}
+                </span>
                 <Link
                   className="p-2 px-3 border font-semibold rounded-full w-full text-center mt-2 cursor-pointer hover:bg-secondary hover:text-white"
-                  href={"/details/" + item?.id}
+                  href={"/details/" + item?.documentId}
                 >
                   Book Now
                 </Link>

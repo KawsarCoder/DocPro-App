@@ -36,9 +36,6 @@ function Header() {
 
   const { user } = useKindeBrowserClient();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <section className="flex items-center justify-between p-4 shadow-sm">
       <div className="flex items-center gap-10 ">
