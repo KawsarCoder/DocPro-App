@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import {
   Facebook,
-  FacebookIcon,
   Github,
   GraduationCap,
   Instagram,
