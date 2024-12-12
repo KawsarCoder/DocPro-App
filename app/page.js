@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section  */}
-      <Hero />
+
       {/* category search  */}
       <CategorySearch />
 

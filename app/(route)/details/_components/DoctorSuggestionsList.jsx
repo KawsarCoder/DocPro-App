@@ -33,6 +33,7 @@ function DoctorSuggestionsList() {
             height={70}
             width={70}
             className="w-[70px] h-[70px] rounded-full"
+            alt="doctor-image"
           />
           <div className="mt-3 flex flex-col ">
             <div className="text-[12px] text-center font-bold bg-orange-100 text-secondary px-0.5 rounded-lg">

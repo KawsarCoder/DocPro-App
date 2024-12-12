@@ -6,52 +6,52 @@ import {
   Instagram,
   Linkedin,
   MapPin,
+  UserCircle,
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Bookappointment from "./Bookappointment";
 
 function DoctorDetails({ doctor }) {
   const socialMediaList = [
     {
       id: 1,
       icon: (
-        <Facebook className="bg-primary rounded-full text-white p-1.5 w-8 h-8" />
+        <Facebook className="bg-primary rounded-full text-white p-1.5 w-8 h-8 hover:bg-secondary" />
       ),
       url: "https://web.facebook.com/mohammod.kawsar.946/",
     },
     {
       id: 2,
       icon: (
-        <Youtube className="bg-primary rounded-full text-white p-1.5 w-8 h-8" />
+        <Youtube className="bg-primary rounded-full text-white p-1.5 w-8 h-8 hover:bg-secondary" />
       ),
       url: "https://www.youtube.com/@code.with.kawsar",
     },
     {
       id: 3,
       icon: (
-        <Linkedin className="bg-primary rounded-full text-white p-1.5 w-8 h-8" />
+        <Linkedin className="bg-primary rounded-full text-white p-1.5 w-8 h-8 hover:bg-secondary" />
       ),
       url: "https://www.linkedin.com/in/mdkawsar1403/",
     },
     {
       id: 4,
       icon: (
-        <Instagram className="bg-primary rounded-full text-white p-1.5 w-8 h-8" />
+        <Instagram className="bg-primary rounded-full text-white p-1.5 w-8 h-8 hover:bg-secondary" />
       ),
       url: "https://www.instagram.com/code.with.kawsar/",
     },
     {
       id: 5,
       icon: (
-        <Github className="bg-primary rounded-full text-white p-1.5 w-8 h-8" />
+        <Github className="bg-primary rounded-full text-white p-1.5 w-8 h-8 hover:bg-secondary" />
       ),
       url: "https://github.com/kawsarcoder",
     },
   ];
-
-  console.log(doctor);
 
   return (
     <>
@@ -71,6 +71,10 @@ function DoctorDetails({ doctor }) {
             <GraduationCap />
             <span>{doctor?.YearOfExperience}</span>
           </div>
+          <div className="flex gap-2 text-gray-500 ">
+            <UserCircle />
+            <span>{doctor?.DoctorPatients}</span>
+          </div>
           <div className="flex gap-2 text-gray-500">
             <MapPin />
             <span>{doctor.DoctorAddress}</span>
@@ -85,9 +89,8 @@ function DoctorDetails({ doctor }) {
               </Link>
             ))}
           </div>
-          <Button className="mt-3 border text-black font-semibold rounded-full w-full text-center cursor-pointer hover:bg-secondary hover:text-white bg-white max-w-fit">
-            Book Appointment
-          </Button>
+
+          <Bookappointment doctor={doctor} />
         </div>
         {/* about doctor  */}
       </section>

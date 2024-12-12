@@ -4,8 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 function DoctorList({ doctorList, heading = "Popular Doctors" }) {
-  console.log(doctorList);
-
   return (
     <div className="mb-10 px-8">
       <h2 className="font-bold text-xl">{heading}</h2>
