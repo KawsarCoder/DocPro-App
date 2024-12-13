@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
 import { Calendar } from "@/components/ui/calendar";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, Clock } from "lucide-react";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import GlobalApi from "@/app/_utils/GlobalApi";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 function Bookappointment({ doctor }) {
   const [date, setDate] = useState(new Date());
@@ -66,10 +66,40 @@ function Bookappointment({ doctor }) {
         Note: note,
       },
     };
+    
+
+    // Save booking to the database (via API)
     GlobalApi.bookAppointment(data).then((res) => {
-      console.log(res);
       if (res) {
-        toast("Booking Confirmation message will send your mail.");
+        // Send confirmation email
+        const emailParams = {
+          to_email: user.email,  // Send the email to the user's email address
+          user_name: user.given_name + " " + user.family_name,
+          user_email: user.email,
+          appointment_date: date.toDateString(),
+          appointment_time: selectedSlot,
+          doctor_name: doctor.DoctorName,
+          problem_note: note || "No additional notes provided.",
+          message: `Hello ${user.given_name} ${user.family_name},\n\nYour appointment with ${doctor.DoctorName} has been confirmed.\n\nHere are the details:\n- Date: ${date.toDateString()}\n- Time: ${selectedSlot}\n- Notes: ${note || "No additional notes provided"}\n\nThank you for choosing DocPro!`,
+        };
+        
+        emailjs
+          .send(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,   
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, 
+            emailParams,                                  
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+          )
+          .then(
+            (response) => {
+              console.log("SUCCESS!", response.status, response.text);
+              toast("Booking confirmation email sent successfully!");
+            },
+            (error) => {
+              console.error("FAILED...", error);
+              toast.error("Failed to send confirmation email.");
+            }
+          );
       }
     });
   };
@@ -88,7 +118,7 @@ function Bookappointment({ doctor }) {
             <DialogDescription>
               <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 mt-5">
-                  {/* calender  */}
+                  {/* Calendar */}
                   <div className="flex flex-col items-baseline gap-3">
                     <h2 className="flex gap-2 items-center">
                       <CalendarDays className="text-primary h-5 w-5" />
@@ -103,7 +133,7 @@ function Bookappointment({ doctor }) {
                     />
                   </div>
 
-                  {/* time slot  */}
+                  {/* Time Slot */}
                   <div className="mt-3 md:mt-0">
                     <h2 className="flex gap-2 items-center mb-3">
                       <Clock className="text-primary h-5 w-5" />
@@ -131,27 +161,25 @@ function Bookappointment({ doctor }) {
             <Label htmlFor="message">Your problem</Label>
             <Textarea
               onChange={(e) => setNote(e.target.value)}
-              placeholder="write problem in short."
+              placeholder="Write your problem in short."
               id="message"
             />
           </div>
-          <DialogFooter className="sm:justify-between">
+          <DialogFooter className="sm:justify-end">
             <DialogClose asChild>
-              <>
-                <Button type="button" variant="destructive">
-                  Close
-                </Button>
-                <Button
-                  className="bg-blue-700 hover:bg-blue-600 text-white"
-                  type="button"
-                  variant="primary"
-                  disabled={!(date && selectedSlot)}
-                  onClick={() => saveBooking()}
-                >
-                  Book Now
-                </Button>
-              </>
+              {/* <Button type="button" variant="destructive">
+                Close
+              </Button> */}
             </DialogClose>
+            <Button
+              className="bg-blue-700 hover:bg-blue-600 text-white"
+              type="button"
+              variant="primary"
+              disabled={!(date && selectedSlot)}
+              onClick={saveBooking}
+            >
+              Book Now
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
