@@ -67,9 +67,12 @@ function Header() {
               <li className="cursor-pointer font-semibold hover:text-secondary hover:border-secondary border p-2 rounded-md">
                 Profile
               </li>
-              <li className="cursor-pointer font-semibold hover:text-secondary hover:border-secondary border p-2 rounded-md">
+              {/* <Link
+                href={"/my-booking"}
+                className="cursor-pointer font-semibold hover:text-secondary hover:border-secondary border p-2 rounded-md"
+              >
                 My Booking
-              </li>
+              </Link> */}
               <li>
                 {" "}
                 <LogoutLink>

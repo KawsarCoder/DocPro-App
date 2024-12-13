@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <div className="md:px-20">
           <Header />
         </div>
-        <Hero />
+
         <div className="md:px-20">
           {children}
           <Toaster />
