@@ -51,7 +51,7 @@ function CategorySearch() {
           categoryList.map((item, index) => (
             // index < 6 &&
             <Link
-              href={"/search/" + item.Name}
+              href={"/search/" + item?.Name}
               key={index}
               className="flex flex-col text-center gap-2 items-center p-5 border hover:border-secondary hover:text-secondary font-semibold rounded-lg  hover:hover:scale-105 transition-all ease-in-out cursor-pointer"
             >

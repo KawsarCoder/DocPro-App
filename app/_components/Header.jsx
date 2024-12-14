@@ -24,8 +24,8 @@ function Header() {
     },
     {
       id: 2,
-      name: "Explore",
-      path: "/",
+      name: "Doctors",
+      path: "/search/Physician",
     },
     {
       id: 3,
