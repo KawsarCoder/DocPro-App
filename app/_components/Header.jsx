@@ -29,8 +29,8 @@ function Header() {
     },
     {
       id: 3,
-      name: "Contact Us",
-      path: "/",
+      name: "Portfolio",
+      path: "https://md-kawsar.netlify.app/",
     },
   ];
 
