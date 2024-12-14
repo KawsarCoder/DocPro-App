@@ -25,7 +25,7 @@ function Header() {
     {
       id: 2,
       name: "Doctors",
-      path: "/search/Physician",
+      path: "/search/Cardiologist",
     },
     {
       id: 3,
