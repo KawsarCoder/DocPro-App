@@ -7,13 +7,16 @@ import DoctorSuggestionsList from "../_components/DoctorSuggestionsList";
 
 function Details({ params }) {
   const [doctor, setDoctor] = useState();
+  console.log(doctor);
+  console.log(params);
+
   useEffect(() => {
     getDoctorById();
   }, []);
 
   const getDoctorById = () => {
-    GlobalApi.getDoctorById(params.recordId).then((res) => {
-      setDoctor(res.data.data);
+    GlobalApi.getDoctorById(params?.recordId).then((res) => {
+      setDoctor(res?.data?.data);
     });
   };
   // console.log(doctor);

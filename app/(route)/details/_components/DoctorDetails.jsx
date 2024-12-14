@@ -77,7 +77,7 @@ function DoctorDetails({ doctor }) {
           </div>
           <div className="flex gap-2 text-gray-500">
             <MapPin />
-            <span>{doctor.DoctorAddress}</span>
+            <span>{doctor?.DoctorAddress}</span>
           </div>
           <h2 className="text-xs bg-orange-100 text-secondary font-semibold p-1 rounded-full px-2 ">
             {doctor?.categories[0]?.Name}

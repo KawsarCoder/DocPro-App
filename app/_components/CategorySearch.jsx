@@ -35,7 +35,7 @@ function CategorySearch() {
           Your health, just a click away!
         </span>
       </p>
-      <div className="flex w-full max-w-sm items-center space-x-2 mt-3">
+      {/* <div className="flex w-full max-w-sm items-center space-x-2 mt-3">
         <Input type="text" placeholder="Search" />
         <Button
           className="bg-white text-secondary font-semibold border border-secondary hover:bg-secondary hover:text-white"
@@ -44,7 +44,7 @@ function CategorySearch() {
           {" "}
           <Search className="h-4 w-4 mr-2" /> Search
         </Button>
-      </div>
+      </div> */}
       {/* display list of category  */}
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-10">
         {categoryList.length > 0 ? (
