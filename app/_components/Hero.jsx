@@ -26,7 +26,7 @@ function Hero() {
 
           <div>
             <Image
-              src="/doctors.jpg"
+              src="/Doctors.jpg"
               width={800}
               height={800}
               className="rounded-3xl"
